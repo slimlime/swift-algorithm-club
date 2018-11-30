@@ -1,5 +1,8 @@
 # Binary Search Tree (BST)
 
+> This topic has been tutorialized [here](https://www.raywenderlich.com/139821/swift-algorithm-club-swift-binary-search-tree-data-structure)
+
+
 A binary search tree is a special kind of [binary tree](../Binary%20Tree/) (a tree in which each node has at most two children) that performs insertions and deletions such that the tree is always sorted.
 
 For more information about a tree, [read this first](../Tree/).
@@ -265,9 +268,9 @@ If there are no more nodes to look at -- when `left` or `right` is nil -- then w
 Searching is a recursive process, but you can also implement it with a simple loop instead:
 
 ```swift
-  public func search(value: T) -> BinarySearchTree? {
+  public func search(_ value: T) -> BinarySearchTree? {
     var node: BinarySearchTree? = self
-    while case let n? = node {
+    while let n = node {
       if value < n.value {
         node = n.left
       } else if value > n.value {
@@ -372,7 +375,7 @@ As an exercise, see if you can implement filter and reduce.
 We can make the code more readable by defining some helper functions.
 
 ```swift
-  private func reconnectParentToNode(node: BinarySearchTree?) {
+  private func reconnectParentTo(node: BinarySearchTree?) {
     if let parent = parent {
       if isLeftChild {
         parent.left = node
@@ -391,7 +394,7 @@ We also need a function that returns the minimum and maximum of a node:
 ```swift
   public func minimum() -> BinarySearchTree {
     var node = self
-    while case let next? = node.left {
+    while let next = node.left {
       node = next
     }
     return node
@@ -399,7 +402,7 @@ We also need a function that returns the minimum and maximum of a node:
 
   public func maximum() -> BinarySearchTree {
     var node = self
-    while case let next? = node.right {
+    while let next = node.right {
       node = next
     }
     return node
@@ -471,7 +474,7 @@ You can also calculate the *depth* of a node, which is the distance to the root.
   public func depth() -> Int {
     var node = self
     var edges = 0
-    while case let parent? = node.parent {
+    while let parent = node.parent {
       node = parent
       edges += 1
     }
@@ -503,7 +506,7 @@ The `predecessor()` function returns the node whose value precedes the current v
       return left.maximum()
     } else {
       var node = self
-      while case let parent? = node.parent {
+      while let parent = node.parent {
         if parent.value < value { return parent }
         node = parent
       }
@@ -524,7 +527,7 @@ The code for `successor()` works the same way but mirrored:
       return right.minimum()
     } else {
       var node = self
-      while case let parent? = node.parent {
+      while let parent = node.parent {
         if parent.value > value { return parent }
         node = parent
       }
@@ -612,8 +615,8 @@ This implementation is recursive, and each case of the enum will be treated diff
 
   public var height: Int {
     switch self {
-    case .Empty: return 0
-    case .Leaf: return 1
+    case .Empty: return -1
+    case .Leaf: return 0
     case let .Node(left, _, right): return 1 + max(left.height, right.height)
     }
   }

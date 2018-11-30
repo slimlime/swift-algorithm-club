@@ -1,8 +1,7 @@
 //: Playground - noun: a place where people can play
 
 func ZetaAlgorithm(ptrn: String) -> [Int]? {
-
-  let pattern = Array(ptrn.characters)
+  let pattern = Array(ptrn)
   let patternLength = pattern.count
 
   guard patternLength > 0 else {
@@ -60,7 +59,7 @@ func ZetaAlgorithm(ptrn: String) -> [Int]? {
 extension String {
 
   func indexesOf(pattern: String) -> [Int]? {
-    let patternLength = pattern.characters.count
+    let patternLength = pattern.count
     let zeta = ZetaAlgorithm(ptrn: pattern + "💲" + self)
 
     guard zeta != nil else {

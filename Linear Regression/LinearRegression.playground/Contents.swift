@@ -17,7 +17,7 @@ let numberOfCarAdvertsWeSaw = carPrice.count
 let numberOfIterations = 100
 let alpha = 0.0001
 
-for n in 1...numberOfIterations {
+for _ in 1...numberOfIterations {
     for i in 0..<numberOfCarAdvertsWeSaw {
         let difference = carPrice[i] - predictedCarPrice(carAge[i])
         intercept += alpha * difference
