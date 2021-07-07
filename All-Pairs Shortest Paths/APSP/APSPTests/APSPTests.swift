@@ -19,7 +19,6 @@ struct TestCase<T> where T: Hashable {
 }
 
 class APSPTests: XCTestCase {
-
   /**
    See Figure 25.1 of “Introduction to Algorithms” by Cormen et al, 3rd ed., pg 690
    */
